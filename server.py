@@ -1,7 +1,7 @@
 """Flask web application for Emotion Detector."""
 
 from flask import Flask, render_template, request
-from EmotionDetection import emotion_detector
+from EmotionDetection.emotion_detection import emotion_detector
 
 app = Flask(__name__)
 
@@ -14,12 +14,12 @@ def emotion_detector_route():
     Returns a formatted string with emotion scores and the dominant emotion.
     Returns an error message if the text input is blank.
     """
-    text_to_analyse = request.args.get('textToAnalyse')
+    text_to_analyze = request.args.get('textToAnalyze')
 
-    result = emotion_detector(text_to_analyse)
+    result = emotion_detector(text_to_analyze)
 
     if result['dominant_emotion'] is None:
-        return "Invalid text! Please try again."
+        return "Invalid input! Try again."
 
     anger = result['anger']
     disgust = result['disgust']
@@ -44,4 +44,3 @@ def render_index_page():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
-
