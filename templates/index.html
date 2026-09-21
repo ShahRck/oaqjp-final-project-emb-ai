@@ -60,7 +60,7 @@
             const text = document.getElementById('textToAnalyse').value;
             const outputDiv = document.getElementById('output');
 
-            fetch('/emotionDetector?textToAnalyse=' + encodeURIComponent(text))
+            fetch('/emotionDetector?textToAnalyze=' + encodeURIComponent(text))
                 .then(response => response.text())
                 .then(data => {
                     outputDiv.innerHTML = data;
@@ -72,4 +72,3 @@
     </script>
 </body>
 </html>
-
